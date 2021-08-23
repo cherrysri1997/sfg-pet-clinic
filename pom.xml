@@ -19,6 +19,7 @@
     <description>sfg-pet-clinic</description>
     <properties>
         <java.version>11</java.version>
+        <additionalparam>-Xdoclint:none</additionalparam>
     </properties>
 
     <build>
