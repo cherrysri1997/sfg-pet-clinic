@@ -45,4 +45,8 @@
       <tag>HEAD</tag>
   </scm>
 
+<!--    mvn release:prepare -Darguments="-Dmaven.javadoc.skip=true" => use this command to
+        prepare the release in case of Java docs error.
+-->
+
 </project>
