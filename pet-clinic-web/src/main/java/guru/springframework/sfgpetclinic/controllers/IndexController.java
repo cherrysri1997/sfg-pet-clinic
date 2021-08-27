@@ -15,4 +15,9 @@ public class IndexController {
     public String getVetsIndexPage() {
         return "/vets/index";
     }
+
+    @RequestMapping({"/owners", "/owners/index", "/owners/index.html"})
+    public String getOwnersIndexPage() {
+        return "owners/index";
+    }
 }
