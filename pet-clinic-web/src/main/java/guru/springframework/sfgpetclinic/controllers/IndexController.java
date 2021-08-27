@@ -10,4 +10,9 @@ public class IndexController {
     public String getIndexPage() {
         return "index";
     }
+
+    @RequestMapping({"/vets", "/vets/index", "/vets/index.html"})
+    public String getVetsIndexPage() {
+        return "/vets/index";
+    }
 }
