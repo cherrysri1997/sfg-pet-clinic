@@ -7,6 +7,24 @@
   <link rel="shortcut icon" type="image/ico" th:href="@{../../icon.ico}"/>
 </head>
 <body>
-<h1 th:text="'List of Owners'"></h1>
+<!--/*@thymesVar id="owner" type="guru.springframework.sfgpetclinic.model.Owner"*/-->
+  <h1 th:text="'List of Owners'"></h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="owner : ${owners}">
+        <th th:text="${owner?.id}"></th>
+        <th th:text="${owner?.firstName}"></th>
+        <th th:text="${owner?.lastName}"></th>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
