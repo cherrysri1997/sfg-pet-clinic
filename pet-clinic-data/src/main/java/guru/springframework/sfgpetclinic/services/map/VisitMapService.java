@@ -1,7 +1,6 @@
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.Visit;
-import guru.springframework.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.services.VisitService;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +8,6 @@ import java.util.Set;
 
 @Service
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
-
-    private final PetService petService;
-
-    public VisitMapService(PetService petService) {
-        this.petService = petService;
-    }
 
     @Override
     public Set<Visit> findAll() {
@@ -28,9 +21,11 @@ public class VisitMapService extends AbstractMapService<Visit, Long> implements 
 
     @Override
     public Visit save(Visit object) {
-        if(object.getPet() != null && object.getPet().getId() == null) {
-            object.getPet().getVisits().add(object);
-            petService.save(object.getPet());
+        if(
+                object.getPet() == null || object.getPet().getId() == null ||
+                object.getPet().getOwner() == null || object.getPet().getOwner().getId() == null
+        ) {
+            throw new RuntimeException("Invalid Visit");
         }
         return super.save(object);
     }
