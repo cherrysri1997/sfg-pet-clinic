@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@SuppressWarnings("SpellCheckingInspection")
 @Component
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
@@ -76,6 +77,9 @@ public class DataLoader implements CommandLineRunner {
         visit1.setDescription("Sneezy Kitty");
         visit1.setDate(LocalDate.of(2021, 2, 14));
         visitService.save(visit1);
+
+        Owner ownerBuild = Owner.builder().firstName("Charan").lastName("Siram").address("ABCD").city("EFGH").telephone("0987654321").build();
+        ownerService.save(ownerBuild);
 
         Owner owner2 = new Owner();
 //        owner2.setId(2L);
